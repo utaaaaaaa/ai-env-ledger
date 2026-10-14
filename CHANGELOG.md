@@ -6,6 +6,27 @@
 
 ## 2026-10-14
 
+### 16. 评估科研类 Skills（小红书第 20 篇推荐）→ 决定不安装，仅收藏
+- **操作**：评估（下载 + 安全审计 + 结构盘点）→ **不安装**，改为 Star 收藏
+- **来源**：小红书笔记《各领域GitHub上skill大全（第十篇 20/20）》（作者：锡孟，2123赞/3019收藏）
+- **候选仓库**：5 个，全部真实存在
+
+| 仓库 | Star | 许可证 | 内含 skill 数 | 更新 |
+|---|---|---|---|---|
+| K-Dense-AI/scientific-agent-skills | 48,763 | MIT | 160+ | 2026-10-12 |
+| claesbackman/AI-research-feedback | 498 | MIT | 11 | 2026-09-25 |
+| joshzyj/open-scholar-skill | 169 | 无(NOASSERTION) | 36 | 2026-09-18 |
+| WenyuChiou/academic-writing-skills | 99 | MIT | 2 | 2026-10-12 |
+| pinshuai/literature-review-skill | 8 | MIT | 1（根目录即skill） | 2026-06-26 |
+
+- **合计约 210 个 skill**，评估后用户决定暂不安装
+- **审计结论**：4 个仓库零风险命中；`open-scholar-skill`（630 文件/237 脚本）命中 sudo / rm -rf / 凭据等规则，经逐项核实**全为误报**——token 为交互式输入非硬编码、sudo 仅出现在命令过滤名单、rm -rf 用于清理临时项目目录
+- **不装的原因**：技能总量过大（210 个），会显著增加技能列表负担与维护成本
+- **备注**：`open-scholar-skill` 带 `setup.sh`，即使日后安装也**不应直接执行**该脚本
+- **后续**：5 个仓库已 Star（2026-10-14），需要时可直接从 Star 列表找到
+
+---
+
 ### 15. 安装 Anthropic 官方技能包 ×15
 - **操作**：安装（`git clone` 官方仓库后筛选复制）
 - **对象**：`anthropics/skills` 仓库（180.9k star）中的 15 个技能
