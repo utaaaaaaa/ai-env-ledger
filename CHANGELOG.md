@@ -4,6 +4,27 @@
 
 ---
 
+## 2026-10-15
+
+### 17. 启动 ML4T 量化项目环境（Machine Learning for Trading 3rd ed.）
+- **操作**：安装 + 克隆
+- **对象**：`stefan-jansen/machine-learning-for-trading`（21,350⭐ MIT，27 章 + 9 案例研究）
+- **用途**：系统学习量化交易从数据到实盘的完整工作流
+- **状态**：✅ 代码与环境就绪（数据未下载）
+- **新增组件**：
+  | 组件 | 版本 | 位置 |
+  |---|---|---|
+  | uv（包/环境管理器） | 0.13.1 | 受管 venv `envs/default/Scripts/uv.exe` |
+  | Python | 3.14.8 | uv 管理（项目要求 `>=3.14,<3.15`） |
+  | 项目虚拟环境 | — | `ml4t/.venv`（942MB） |
+- **克隆技巧**：仓库 1.3GB（`uv.lock` 占 1GB）→ 用 `git clone --filter=blob:none --sparse` + `sparse-checkout set` **显式列出目录名**（cone 模式不接受通配符），最终代码 270MB
+- **运行要点**：脚本必须从仓库根目录运行并设 `PYTHONPATH=<仓库根>`，否则 `import utils` 失败
+- **待办**：数据集约 4GB，需 `python data/download_all.py --free-only`；第 13/21/22 章需另装 torch 系依赖（约 10GB）
+- **备注**：Kalshi / Polymarket 预测市场 API 在国内被地域限制，官方说明属可忽略项
+- **产出**：`ml4t/学习路线.md`（七阶段路线图 + 起步路径）
+
+---
+
 ## 2026-10-14
 
 ### 16. 评估科研类 Skills（小红书第 20 篇推荐）→ 决定不安装，仅收藏
