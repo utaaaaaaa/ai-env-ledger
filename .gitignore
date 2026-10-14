@@ -9,6 +9,9 @@ config.yaml
 *.key
 *.pem
 
+# 例外：脚本本体不含明文凭据，需入库
+!scripts/set_xueqiu_cookie.py
+
 # 系统噪音
 .DS_Store
 Thumbs.db
