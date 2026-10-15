@@ -6,6 +6,15 @@
 
 ## 2026-10-15
 
+### 18. 厘清「API Key」疑云：全面盘点凭据，结论 = 无一使用传统 API Key
+- **操作**：核查 + 补充索引
+- **起因**：手机端会话（巨浪3任务）调用 Agent-Reach 时被提示「标注需要 API Key」，用户询问之前跑通的 key 存放位置
+- **核查结果**：5 个凭据文件全部在位（`~/.agent-reach/config.yaml`、`~/.config/bird/credentials.env`、`~/.config/gh/hosts.yml` 双写、`~/.mcporter/mcporter.json`）
+- **结论**：16 渠道无一使用传统 API Key——已跑通 11 渠道全靠 Cookie / PAT Token / 浏览器登录态；需 API Key 的 Exa、小宇宙（Groq）从未配置
+- **状态**：✅ 已核实
+- **变更**：`inventory/02-agent-reach.md` 凭据索引补全（新增 Exa/mcporter 行、`bilibili_proxy` 行、「无传统 API Key」结论说明）
+- **备注**：手机端设备访问不到本机凭据文件；Agent-Reach 依赖本机 Chrome 登录态，跨设备不可迁移
+
 ### 17. 启动 ML4T 量化项目环境（Machine Learning for Trading 3rd ed.）
 - **操作**：安装 + 克隆
 - **对象**：`stefan-jansen/machine-learning-for-trading`（21,350⭐ MIT，27 章 + 9 案例研究）

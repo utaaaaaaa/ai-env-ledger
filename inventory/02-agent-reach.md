@@ -42,7 +42,14 @@
 | 雪球 | `~/.agent-reach/config.yaml` → `xueqiu_cookie` | `xq_a_token` + `u` 缺一不可 |
 | GitHub | `~/.config/gh/hosts.yml` **和** `%APPDATA%\GitHub CLI\hosts.yml` | **两个位置都要写**，gh 与 Agent Reach 读的不同 |
 | 小红书 / Reddit / Facebook / B站 | Chrome 浏览器会话（OpenCLI 扩展） | 不落盘，依赖浏览器登录态 |
+| B站/其他走代理的 | `~/.agent-reach/config.yaml` → `bilibili_proxy` | 代理专用键 |
+| Exa（MCP 搜索） | `~/.mcporter/mcporter.json` → 仅 `baseUrl`（`https://mcp.exa.ai/mcp`） | **未配 API Key，渠道未解锁** |
 | 代理 | `~/.agent-reach/config.yaml` → `proxy` | `http://127.0.0.1:7890` |
+
+> **⚠️ 重要结论（2026-10-15 核实）**：全部 16 渠道**无一使用传统 API Key**。
+> 已跑通的 11 个渠道全靠 **Cookie（Twitter/雪球）+ PAT Token（GitHub）+ 浏览器登录态（小红书/Reddit/Facebook/B站）**。
+> 需要 API Key 的两个渠道——Exa、小宇宙（Groq）——**从未配置过 key**，处于未解锁状态。
+> 手机端等其他设备无法使用本套凭据：文件在本机，且浏览器登录态不可迁移。
 
 ---
 
