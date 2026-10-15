@@ -6,11 +6,22 @@
 
 ## 2026-10-15
 
+### 19. 查证官网口径 + Exa 渠道实测解锁（免 API Key）
+- **操作**：核查官网原文 + 实测 + 修正台账
+- **起因**：用户追问「Agent-Reach 官网有说需要 API key 吗」
+- **官网结论**：README 明确「💰 完全免费——所有工具开源、所有 API 免费」（L96）；Exa 全网搜索「MCP 接入，免费无需 Key」（L111）；Jina Reader「免费，不需要 API Key」（L232）。仓库无独立官网域名，GitHub README 即官网
+- **实测结果**：`mcporter call exa.web_search_exa query="人民币汇率" numResults=2` 免 Key 直接返回真实结果 → **Exa 由 ⚠️ 升级为 ✅ 可用**
+- **纠正**：第 18 条「Exa 需 API Key」判断**有误**——官方 `setup-exa.md` 明确「免费、无需注册、无需 API Key」，本机配置与官方推荐命令完全一致
+- **手机端提示溯源**：官方 SKILL.md frontmatter 与全仓库均**无 `requires_api_key` 字段** → 该提示来自技能市场/聚合源元数据，与官方口径不符
+- **状态**：✅ 已修正并入库
+- **变更**：`inventory/02-agent-reach.md` 渠道表 Exa 行状态 ⚠️→✅、凭据段 Exa 行、「重要结论」段全部改写
+- **备注**：mcporter 装在受管 node workspace（`node_modules/.bin`），不在默认 PATH，需手动加
+
 ### 18. 厘清「API Key」疑云：全面盘点凭据，结论 = 无一使用传统 API Key
 - **操作**：核查 + 补充索引
 - **起因**：手机端会话（巨浪3任务）调用 Agent-Reach 时被提示「标注需要 API Key」，用户询问之前跑通的 key 存放位置
 - **核查结果**：5 个凭据文件全部在位（`~/.agent-reach/config.yaml`、`~/.config/bird/credentials.env`、`~/.config/gh/hosts.yml` 双写、`~/.mcporter/mcporter.json`）
-- **结论**：16 渠道无一使用传统 API Key——已跑通 11 渠道全靠 Cookie / PAT Token / 浏览器登录态；需 API Key 的 Exa、小宇宙（Groq）从未配置
+- **结论**：16 渠道无一使用传统 API Key——已跑通渠道全靠 Cookie / PAT Token / 浏览器登录态 / 免费 MCP 端点；需 key 的仅 Groq Whisper（有免费额度，可选功能）｜⚠️ 本条对 Exa 的判断已在第 19 条纠正
 - **状态**：✅ 已核实
 - **变更**：`inventory/02-agent-reach.md` 凭据索引补全（新增 Exa/mcporter 行、`bilibili_proxy` 行、「无传统 API Key」结论说明）
 - **备注**：手机端设备访问不到本机凭据文件；Agent-Reach 依赖本机 Chrome 登录态，跨设备不可迁移

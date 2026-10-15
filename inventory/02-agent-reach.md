@@ -7,7 +7,7 @@
 - **配置目录**：`~/.agent-reach/`（`config.yaml` 存各平台 Cookie）
 
 > ⚠️ `agent-reach doctor` 的计数**偏保守**：它看不到浏览器登录态、不读环境变量、不启动远端服务。
-> 官方读数 5/16，**实测可用 11 个**（见下表）。
+> 官方读数 5/16，**实测可用 12 个**（含 Exa，见下表，2026-10-15 更新）。
 
 ---
 
@@ -26,7 +26,7 @@
 | 9 | 👽 Reddit | ✅ | Chrome 登录 + 梯子 |
 | 10 | 📘 Facebook | ✅ | Chrome 登录 |
 | 11 | 🐙 GitHub | ✅ | hosts.yml 双写（见下） |
-| 12 | 🔍 Exa 语义搜索 | ⚠️ | 已配置，连通性未验证 |
+| 12 | 🔍 Exa 语义搜索 | ✅ | **实测可用**（官方免费 MCP 端点，无需 API Key，2026-10-15 验证返回真实结果） |
 | 13 | 📷 Instagram | ❌ | 需梯子 + 手机号注册（价值最低，可跳过） |
 | 14 | 💼 LinkedIn | ❌ | 需登录 |
 | 15 | 🎯 Boss直聘 | ❌ | 需专用 Chrome 登录 zhipin |
@@ -43,12 +43,13 @@
 | GitHub | `~/.config/gh/hosts.yml` **和** `%APPDATA%\GitHub CLI\hosts.yml` | **两个位置都要写**，gh 与 Agent Reach 读的不同 |
 | 小红书 / Reddit / Facebook / B站 | Chrome 浏览器会话（OpenCLI 扩展） | 不落盘，依赖浏览器登录态 |
 | B站/其他走代理的 | `~/.agent-reach/config.yaml` → `bilibili_proxy` | 代理专用键 |
-| Exa（MCP 搜索） | `~/.mcporter/mcporter.json` → 仅 `baseUrl`（`https://mcp.exa.ai/mcp`） | **未配 API Key，渠道未解锁** |
+| Exa（MCP 搜索） | `~/.mcporter/mcporter.json` → `baseUrl`（`https://mcp.exa.ai/mcp`） | **不需要 API Key**（官方免费端点）；命令在受管 node workspace，需手动加 PATH |
 | 代理 | `~/.agent-reach/config.yaml` → `proxy` | `http://127.0.0.1:7890` |
 
-> **⚠️ 重要结论（2026-10-15 核实）**：全部 16 渠道**无一使用传统 API Key**。
-> 已跑通的 11 个渠道全靠 **Cookie（Twitter/雪球）+ PAT Token（GitHub）+ 浏览器登录态（小红书/Reddit/Facebook/B站）**。
-> 需要 API Key 的两个渠道——Exa、小宇宙（Groq）——**从未配置过 key**，处于未解锁状态。
+> **⚠️ 重要结论（2026-10-15 核实）**：**官网 README 明确「完全免费，所有 API 免费」——没有任何渠道要求付费 API Key**（README L96 / L111 / L232）。
+> 已跑通渠道全靠 **Cookie（Twitter/雪球）+ PAT（GitHub）+ 浏览器登录态（小红书/Reddit/FB/B站）+ 免费 MCP 端点（Exa）**。
+> 全仓库**无 `requires_api_key` 类字段** → 手机端弹窗「标注需要 API Key」来自技能市场元数据，与官方口径不符。
+> 唯一沾 key 的是 Groq Whisper（小宇宙/无字幕视频转录，**有免费额度**，可选功能）。
 > 手机端等其他设备无法使用本套凭据：文件在本机，且浏览器登录态不可迁移。
 
 ---
