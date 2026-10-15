@@ -55,3 +55,22 @@
 | `find-skill-skillhub__skillhub` | 从 SkillHub 搜索安装技能 | ✅ |
 | `flight-price-api-fallback` | 机票价格降级数据源（Kiwi API） | ✅ |
 | `@indiv-yaoyao/gh-cli-readonly-agent` | gh CLI 只读操作规范 | ✅ |
+
+---
+
+## 社区技能（skills.sh 2026 榜单 · 4 个）
+
+- **来源**：SkillHub 社区源，装在 `~/.workbuddy/skills/@<命名空间>/`
+- **安装日期**：2026-10-16
+- **触发**：用户发来榜单截图，点名安装第 2 / 9 / 10 名
+
+| 榜单排名 | 技能（命名空间/名称） | 用途 | 状态 |
+|---|---|---|---|
+| 🥈 2 | `@user_9ea429aa/grill-me` | 方案追问入口（自身仅 18 行） | ✅ 需配合下一条 |
+| — | `@user_692c63a9/plan-grilling` | **grill-me 的实现依赖**：逐问深挖方案决策树 | ✅ 补装 |
+| 9 | `@user_0b46df4a/mp-handoff` | 把对话压缩成交接文档给下一个 agent（Matt Pocock 原版镜像，MIT） | ✅ |
+| 10 | `@clawhub_ivangdavila/triage` | 任务优先级 P0–P3 自动学习与分流 | ✅ |
+
+> **依赖坑（重要）**：`grill-me` 本体只有一句「Load and execute the `plan-grilling` skill」——**少了 plan-grilling 就是空壳**，已一并补装，依赖链闭合。
+> **安全审计**：4 个技能均为纯 Markdown 指令，无脚本、无外发请求、无凭据读取；`mp-handoff` 反而明确要求对 API key / 密码脱敏。
+> **版本选择**：市场上同名技能有多个作者版本（grill-me 有 11 个），本次按榜单截图的中文描述精确匹配——如 handoff 选「对话交接」语义的 mp-handoff，而非 Obsidian 库版本。

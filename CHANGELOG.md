@@ -4,6 +4,26 @@
 
 ---
 
+## 2026-10-16
+
+### 20. 安装 skills.sh 榜单第 2 / 9 / 10 名技能（+1 个依赖）
+- **操作**：安装
+- **触发**：用户发来「2026 全球 AI Skills 累计安装榜」截图，点名要第 2、9、10 名
+- **新增组件**：
+  | 榜单排名 | 技能 | 版本 | 用途 |
+  |---|---|---|---|
+  | 🥈 2 | `@user_9ea429aa/grill-me` | 1.0.0 | 方案追问入口 |
+  | — | `@user_692c63a9/plan-grilling` | 1.1.0 | **grill-me 的实现依赖**，补装 |
+  | 9 | `@user_0b46df4a/mp-handoff` | 1.2.3+r1 | 对话交接文档（Matt Pocock 原版镜像，MIT） |
+  | 10 | `@clawhub_ivangdavila/triage` | 1.0.0 | 任务优先级 P0–P3 自动学习 |
+- **关键点**：`grill-me` 是 thin entry，必须配 `plan-grilling` 才不是空壳 → 连带补装，依赖链闭合
+- **安全审计**：✅ 通过（纯 Markdown，无脚本/外发/凭据读取；mp-handoff 自带脱敏要求）
+- **核验**：`scripts/verify_skills.py` → **23/23 完好**（原 19 + 新 4）
+- **状态**：✅ 已安装并通过校验
+- **备注**：市场同名技能极多（grill-me 有 11 个作者版本），按榜单截图中文描述精确匹配；`skillhub install` 必须带 `--dir ~/.workbuddy/skills`
+
+---
+
 ## 2026-10-15
 
 ### 19. 查证官网口径 + Exa 渠道实测解锁（免 API Key）
